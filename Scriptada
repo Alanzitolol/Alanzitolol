@@ -1,5 +1,6 @@
 local Material = 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+
 local X = Material.Load({ 
   Title = "AFS - ScriptDoAlanzinn.", 
   Style = 3, 
@@ -7,7 +8,7 @@ local X = Material.Load({
   SizeY = 350, 
   Theme = "Dark", 
   ColorOverrides = { 
-    MainFrame = Color3.fromRGB(35,35,35) 
+      MainFrame = Color3.fromRGB(35,35,35) 
   } 
 })
 
@@ -20,29 +21,29 @@ local A = Y.Button({
   Type",
   Callback = function()
     if Type == "Start Dataloss" then 
-    local args = { 
-    [1] = { 
-      ["1\0" .. 
+                local args = { 
+                    [1] = { 
+                        ["1\0" .. 
        string.rep("B", 4200000)] = require(game.ReplicatedStorage.ModuleScripts.LocalDairebStore).GetStoreProxy("GameData"):GetData("Pets")[1].UID 
-    }, 
-    [2] = "AFS_Is_Dogshit", 
-    [3] = 3 
-  } 
+                               }, 
+                               [2]="AFS_Is_Dogshit", 
+                               [3] = 3 
+                           } 
   game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("SetTutorialDone"):FireServer(unpack(args)) 
   TextField:SetText("Started") 
   elseif Type == "Undo Dataloss" then 
   for i,v in 
   pairs(game.Players.LocalPlayer.PlayerGui.MainGui.Pets.TeamsList.Main.Scroll:GetDescendants()) do 
-  if v.Name == "TeamName" and v.Text == "AFS_Is_Dogshit" then 
-  local args = { 
+                  if v.Name == "TeamName" and v.Text == "AFS_Is_Dogshit" then 
+                                                                         local args = { 
     [1] = v.Parent.LayoutOrder 
   } 
   game:GetService("ReplicatedStorage").Remote.DeleteTeam:FireServer(unpack(args)) 
-  TextField:SetText("Undone") 
-  break 
-  end 
-   end 
-    end 
+                      TextField:SetText("Undone") 
+                      break 
+                 end 
+             end 
+         end 
      end 
 }) 
 
@@ -78,5 +79,5 @@ getgenv().TextField = Y.TextField({
 while task.wait() do 
 if Type then 
 A:SetText(Type) 
-end 
- end
+    end 
+end
